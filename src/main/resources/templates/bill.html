@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bill</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Bill</h1>
+<p>Date: <span th:text="${date}"></span></p>
+<p>Due Date: <span th:text="${dueDate}"></span></p>
+<p>Amount: <span th:text="${amount}"></span></p>
+<p>Description: <span th:text="${description}"></span></p>
+<p>Please pay by the due date.</p>
+</body>
+</html>

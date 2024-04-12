@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MediCare Uganda Inc. - IHFMS</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 48px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: calc(100vh - 48px);
+            padding-top: .5rem;
+            overflow-x: hidden;
+            overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        }
+        .main-content {
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../static/images/medical.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+<!--        <a class="navbar-brand" href="#">MediCare Uganda Inc. - IHFMS</a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Dashboard</a>-->
+<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/patients}">Patient Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/reconciliation}">Accounts Reconciliation</a>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" id="messages" th:href="@{/messag}">Messages</a>-->
+<!--                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" href="#">Dashboard</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/patients}">Patient Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/reconciliation}">Accounts Reconciliation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="messaging" >Messages</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-4 main-content">
+            <div id="main-page">
+                <!-- Main content -->
+                    <div class="pt-3 pb-2 mb-3 border-bottom">
+                        <h2>Welcome to MediCare Uganda Inc. IHFMS</h2>
+                    </div>
+                    <div class="container">
+                    </div>
+            </div>
+            <div id="username-page" class="hidden">
+                <div class="username-page-container">
+                    <h1 class="title">Type your username to enter the Chatroom</h1>
+                    <form id="usernameForm" name="usernameForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="accent username-submit">Start Chatting</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="chat-page" class="hidden">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2>Medicare Staff ChatRoom </h2>
+                    </div>
+                    <div class="connecting">
+                        Connecting...
+                    </div>
+                    <ul id="messageArea">
+
+                    </ul>
+                    <form id="messageForm" name="messageForm">
+                        <div class="form-group">
+                            <div class="input-group clearfix">
+                                <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                                <button type="submit" class="primary">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

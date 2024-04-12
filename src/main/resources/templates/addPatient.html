@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Patient</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center"> Create New Patient </h1>
+            <div class="card-body">
+                <form th:action="@{/patients}" th:object="${patient}" method="POST">
+                    <div class="form-group">
+                        <label> Patient Name </label>
+                        <input
+                                type="text"
+                                name="patient_name"
+                                th:field="*{patient_name}"
+                                class="form-control"
+                                placeholder="Enter Patient Name"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label> Patient Age </label>
+                        <input
+                                type="number"
+                                min="1"
+                                name="age"
+                                th:field="*{age}"
+                                class="form-control"
+                                placeholder="Enter Patient age"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label> Patient weight </label>
+                        <input
+                                type="number"
+                                min="5"
+                                name="weight"
+                                th:field="*{weight}"
+                                class="form-control"
+                                placeholder="Enter Patient weight"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Treatment </label>
+                        <input
+                                type="text"
+                                name="treatment"
+                                th:field="*{treatment}"
+                                class="form-control"
+                                placeholder="Enter treatment"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Amount </label>
+                        <input
+                                type="number"
+                                min="1000"
+                                name="treatment"
+                                th:field="*{amount}"
+                                class="form-control"
+                                placeholder="Enter amount for administered medicine "
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Email </label>
+                        <input
+                                type="text"
+                                name="email"
+                                th:field="*{email}"
+                                class="form-control"
+                                placeholder="Enter Email"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Patient Type </label>
+                        <select
+                                id="patientType"
+                                th:field="*{patientType}" >
+                                <option value="Inpatient">Inpatient</option>
+                                <option value="Outpatient">Outpatient</option>
+                        </select>
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
