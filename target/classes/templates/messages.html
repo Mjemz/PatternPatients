@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Messages</title>
+</head>
+<body>
+<h1>Messages</h1>
+<div th:each="message : ${messages}">
+    <p th:text="${message.content}"></p>
+    <p th:text="${message.timestamp}"></p>
+</div>
+<form th:action="@{/messages}" method="post">
+    <input type="text" name="content" placeholder="Write a message...">
+    <button type="submit">Post</button>
+</form>
+</body>
+</html>

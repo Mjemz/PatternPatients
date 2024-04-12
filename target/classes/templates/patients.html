@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient List</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css" />
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 48px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+        .navigator{
+            z-index: 102;
+        }
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: calc(100vh - 48px);
+            padding-top: .5rem;
+            overflow-x: hidden;
+            overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark navigator">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Patient Management System</a>
+
+</nav>
+<div class="container-fluid ">
+    <div class="row">
+    <!--sidebar-->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/patients}">Patient Management</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/reconciliation}">Accounts Reconciliation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="messaging" >Messages</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="col-md-9 ml-sm-auto col-lg-10 px-4 main-content">
+                <div id="main-page">
+                <h1>Patient List</h1>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <a th:href="@{/patients/new}" class="btn btn-primary btn-sm mb-3">Add Patient</a>
+                    </div>
+                </div>
+
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Patient Age</th>
+                            <th>Patient Weight</th>
+                            <th>Patient Treatment</th>
+                            <th>Patient Email</th>
+                            <th>Patient Type</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="patient : ${patients}">
+                        <td th:text="${patient.patient_name}"></td>
+                        <td th:text="${patient.age}"></td>
+                        <td th:text="${patient.weight}"></td>
+                        <td th:text="${patient.treatment}"></td>
+                        <td th:text="${patient.email}"></td>
+                        <td th:text="${patient.patientType}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+                <div id="username-page" class="hidden">
+                    <div class="username-page-container">
+                        <h1 class="title">Type your username to enter the Chatroom</h1>
+                        <form id="usernameForm" name="usernameForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="accent username-submit">Start Chatting</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="chat-page" class="hidden">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h2>Medicare Staff ChatRoom </h2>
+                        </div>
+                        <div class="connecting">
+                            Connecting...
+                        </div>
+                        <ul id="messageArea">
+                        </ul>
+                        <form id="messageForm" name="messageForm">
+                            <div class="form-group">
+                                <div class="input-group clearfix">
+                                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                                    <button type="submit" class="primary">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

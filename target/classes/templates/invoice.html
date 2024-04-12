@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Invoice</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Invoice</h1>
+<p>Invoice Number: <span th:text="${invoiceNumber}"></span></p>
+<p>Date: <span th:text="${date}"></span></p>
+<p>Amount: <span th:text="${amount}"></span></p>
+<p>Description: <span th:text="${description}"></span></p>
+<p>Please make payment to the following account:</p>
+<p>Account Number: <span th:text="${accountNumber}"></span></p>
+</body>
+</html>
